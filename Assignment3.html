@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+  <body>
+    <h2>Income Tax Calculator</h2>
+    <br><br>
+    <div class="inner-content">
+        <div class="compute">
+          <input type="number" name="taxable" id="taxable">
+          <button onclick="compute()">Compute </button>
+        </div>
+        <div class="result">
+          <label style="font-weight:bold ;">Result: </label>
+          <p class="textRes" id="text-result"></p>
+        </div>
+      </div>
+      <script>
+        const number = document.getElementById("taxable")
+        const result = document.getElementById("text-result")
+    
+        function compute(){
+          const x = number.value
+          let excess, rate, fixed 
+    
+          if(x <= 250000){
+            excess = 0
+            rate = 0
+            fixed = 0
+          }else if (x <= 400000){
+            excess = 250000
+            rate = 0.20
+            fixed = 0
+          }else if(x <= 800000){
+            excess = 400000
+            rate = 0.25
+            fixed = 30000 
+          }else if(x <= 2000000){
+            excess = 800000
+            rate = 0.30
+            fixed = 130000
+          }else if(x <= 8000000){
+            excess = 2000000
+            rate = 0.32
+            fixed = 490000
+          } else{
+            excess = 8000000
+            rate = 0.35
+            fixed = 2410000
+          }
+          const incomeTax = (x - excess)*rate + fixed
+          result.innerHTML = 'The income tax is '+ incomeTax
+        }
+      </script>
+    </body>
+    <div class = "factorial">
+      <br><br><br>
+      <div align="center" class = "factorial for N">
+        <!-- factorial of N -->
+        <div class = "factorial">
+          <h2>Factorial of N Numbers</h2>
+          <p>
+            <h>Input a value of N</h>
+            <input id= "num">
+            <button onclick="factorial()">Calculate</button>
+            <p>
+            The factorial of N is: <span id="fact"></span>
+          </p>
+        </div>
+    
+        <br><br>
+    
+        <!-- sum of N -->
+        <div class = "sum of N">
+          <h2>Sum of the First N Numbers</h2>
+          <p>
+            <label>Input a value of n</label>
+            <input id="num1">
+            <button onclick="sumMo()">Calculate</button>
+          </p>
+          <p>The sum is: <span id="sum"></span></p>
+      </div>
+    
+      <br><br>
+    
+      <!-- average of N -->
+      <div class="average">
+        <h2>Average of the First N Numbers</h2>
+        <p>
+          <label>Input a value of n</label>
+          <input id="num2">
+          <button onclick="AverageN()">Calculate</button> 
+          </p>
+          <p>The average is: <span id="sum2"></span>
+        </p>
+    </div>
+    
+    </body>
+    <script>
+      function factorial()
+      {
+      var n = document.getElementById("num").value;
+      var i=1, f=1; 
+      while(n>=i){
+        f *= i;
+        i++
+      }
+      document.getElementById("fact").innerHTML = f;
+      }
+      function sumMo()
+      {
+      var n = document.getElementById("num1").value;
+      var i=1, f=0;
+      do{
+        f += i;
+        i++
+      }while(n >= i)
+      document.getElementById("sum").innerHTML = f;
+      }
+      function AverageN()
+      {
+        var x = document.getElementById("num2").value;
+          let nth = 0;
+    
+          for(let i = 1; i < x; i++){
+            nth += i;
+          }
+          let sum2 = nth/x
+          document.getElementById("sum2").innerHTML = sum2;
+      }
+    </script>
+</html>
